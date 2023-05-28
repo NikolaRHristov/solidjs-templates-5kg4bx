@@ -5,9 +5,9 @@ import styles from './App.module.css';
 import * as monaco from 'monaco-editor';
 import './scripts/monacoWorker';
 
-const App: Component = () => {
-  let editor: HTMLElement | ((el: HTMLElement) => void);
+let editor: HTMLElement | ((el: HTMLElement) => void);
 
+const App: Component = () => {
   const [value, setValue] = createSignal('');
 
   const initialValue = value();
