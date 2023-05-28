@@ -96,8 +96,9 @@ const App: Component = () => {
       });
 
       /**
-       * Issue 1: When you enter text and the value is changed you have to trigger the input event on the element.
+       * When you enter text and the value() is changed you have to trigger the input event on the element.
        * This is done with createEffect. I don't know if I'm doing something wrong here or the value() should bind differently.
+       * If you remove the createEffect this stops working both ways. I guess this is a fix, but you have to do id={fieldId} and event, it doesn't detect automatically on value() change.
        */
       createEffect(
         on(
@@ -118,10 +119,6 @@ const App: Component = () => {
           { defer: false }
         )
       );
-
-      /**
-       * Issue 2: You have a required hidden field that also uses validation, but it is not shown when the value is changed, even if you do the input event.
-       */
     }
   });
 
@@ -134,7 +131,7 @@ const App: Component = () => {
           <div>
             <Field
               name="content"
-              validate={[required(`Please enter some HTML.`)]}
+              validate={[required(`Visible Field: Please enter some HTML.`)]}
             >
               {(field, props) => (
                 <>
@@ -157,7 +154,7 @@ const App: Component = () => {
           <div>
             <Field
               name="contentHidden"
-              validate={[required(`Please enter some HTML.`)]}
+              validate={[required(`Hidden Field: Please enter some HTML.`)]}
             >
               {(field, props) => (
                 <>
@@ -166,7 +163,7 @@ const App: Component = () => {
                     value={value()}
                     id={fieldIdHidden}
                     /**
-                     * If you change the type to text the validation is triggered.
+                     * If you change the type to text the validation is triggered automatically without createEffect.
                      */
                     type="hidden"
                     required
