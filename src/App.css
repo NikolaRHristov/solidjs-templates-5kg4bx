@@ -1,0 +1,45 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #282c34;
+}
+
+.main {
+  padding: 30px;
+}
+
+.editor {
+  width: 100%;
+  height: 420px;
+}
+
+.editor code {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.editor input,
+.editor button {
+  padding: 5px;
+  margin: 30px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  line-height: 2rem;
+}
+
+.editor button {
+  cursor: pointer;
+}
+
+.editor .error {
+  color: red;
+}
