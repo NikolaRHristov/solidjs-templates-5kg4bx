@@ -162,9 +162,6 @@ const App: Component = () => {
                     {...props}
                     value={value()}
                     id={fieldIdHidden}
-                    /**
-                     * If you change the type to text the validation is triggered automatically without createEffect.
-                     */
                     type="hidden"
                     required
                   />
